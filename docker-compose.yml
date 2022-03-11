@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  nginx:
+    container_name: ${DOCKER_CONTAINER_NAME}
+    image: nginx:latest
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./server/html/:/usr/share/nginx/html/
+      - ./server/conf.d/:/etc/nginx/conf.d/
+      - ./server/log/:/var/log/nginx/
+      - ./letsencrypt/var_www_certbot:/var/www/certbot/:ro
+      - ./letsencrypt/etc/:/etc/letsencrypt/:ro
+    environment:
+      NGINX_HOST: localhost
+      NGINX_PORT: 80
+    ports:
+      - ${DOCKER_HTTP_PORT}:80
+      - ${DOCKER_HTTPS_PORT}:443
+
+  certbot:
+    container_name: ${DOCKER_CERTBOT_CONTAINER_NAME}
+    image: certbot/certbot:latest
+    volumes:
+      - ./letsencrypt/var_www_certbot/:/var/www/certbot/:rw
+      - ./letsencrypt/etc/:/etc/letsencrypt/:rw
+volumes:
+  html:
+  conf.d:
