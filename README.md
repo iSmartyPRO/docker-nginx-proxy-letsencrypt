@@ -39,13 +39,15 @@ docker-compose run --rm certbot certonly --webroot --webroot-path /var/www/certb
 ```
 rm -rf ./server/conf.d/1step.conf
 ```
+
+Копируем файл второго шага
 ```
-cp ./letsencrypt/templates/2step.conf ./server/conf.d/your.domain.name.conf
-```
-```
-vim ./server/conf.d/your.domain.name.conf
+cp ./letsencrypt/templates/2step-proxy.conf ./server/conf.d/www-example-com.conf
 ```
 редактируем файл используя свои значения.
+```
+vim ./server/conf.d/www-example-com.conf
+```
 
 так же в шаблоне имеется еще один пример прокси конфига: ./letsencrypt/templates/proxy-sample.conf
 
