@@ -14,6 +14,9 @@ docker-compose up -d
 Копируем шаблон первого шага:
 ```
 cp ./letsencrypt/templates/1step.conf ./server/conf.d/1step.conf
+```
+
+```
 vim ./server/conf.d/1step.conf
 ```
 редактиурем файл, используя свое доменное имя.
