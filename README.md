@@ -38,7 +38,11 @@ docker-compose run --rm certbot certonly --webroot --webroot-path /var/www/certb
 
 ```
 rm -rf ./server/conf.d/1step.conf
+```
+```
 cp ./letsencrypt/templates/2step.conf ./server/conf.d/your.domain.name.conf
+```
+```
 vim ./server/conf.d/your.domain.name.conf
 ```
 редактируем файл используя свои значения.
