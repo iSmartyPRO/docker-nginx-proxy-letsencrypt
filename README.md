@@ -66,3 +66,11 @@ docker exec nginx nginx -t
 ```
 docker-compose run --rm certbot renew
 ```
+
+в дополнении рекомендую использовать единую сеть для всех контейнеров, для этого отредактировав docker-compose.yml добавив следующие строки:
+```
+networks:
+  default:
+    external:
+      name: "docker-lan"
+```
