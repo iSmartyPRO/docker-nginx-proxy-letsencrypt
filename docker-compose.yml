@@ -7,6 +7,7 @@ services:
     tty: true
     volumes:
       - ./server/html/:/usr/share/nginx/html/
+      - ./server/ssl/:/usr/share/ssl/
       - ./server/conf.d/:/etc/nginx/conf.d/
       - ./server/log/:/var/log/nginx/
       - ./letsencrypt/var_www_certbot:/var/www/certbot/:ro
